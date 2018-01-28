@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg936\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red14\green115\blue192;\red255\green255\blue255;\red159\green159\blue159;
+\red38\green38\blue38;}
+{\*\expandedcolortbl;;\cssrgb\c0\c53333\c80000;\cssrgb\c100000\c100000\c100000;\cssrgb\c68627\c68627\c68627;
+\cssrgb\c20000\c20000\c20000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl320\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://leetcode.com/livelearn"}}{\fldrslt 
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 livelearn}}
+\f0\fs24 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \'a0Jan 31, 2017, 6:28 PM
+\fs28 \cf5 \cb1 \strokec5 \
+\pard\pardeftab720\li100\sl420\partightenfactor0
+\cf5 \
+\pard\pardeftab720\li100\sl420\partightenfactor0
+\cf5 \cb3 Why start from the end instead of just going from the beginning?\cb1 \
+\pard\pardeftab720\sl320\sa280\partightenfactor0
+\cf5 \
+\pard\pardeftab720\sl340\partightenfactor0
+
+\b \cf4 \cb3 \strokec4 1
+\b0 \cf5 \cb1 \strokec5 \
+\pard\pardeftab720\sl320\partightenfactor0
+\cf5 \
+\pard\pardeftab720\sl320\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://leetcode.com/gritty1123"}}{\fldrslt \cf2 \cb3 \strokec2 gritty1123}}
+\fs24 \cf4 \cb3 \strokec4 \'a0Aug 17, 2016, 2:13 PM
+\fs28 \cf5 \cb1 \strokec5 \
+\pard\pardeftab720\li100\sl420\partightenfactor0
+\cf5 \
+\pard\pardeftab720\li100\sl420\partightenfactor0
+\cf5 \cb3 @Yanning For the last position, once you generate a random number in range (0,len(ans)), you would have decided the value that is going to go in that position after shuffling. So once the swap is done, the new element there is already in its \'91random\'92 position (or in other words a random element of that array has been put at that position. In the next iteration you are looking for a random index among the leftover numbers for the last but one position, so the index has to be from a range one less.\cb1 \
+\cb3 For example, assume there are 5 numbers are in a hat, you picked one and placed it outside ( in our case swapped it with the one in the position we are looking to fill), Now the next time you want to pick a number from the remaining 4.\cb1 \
+\pard\pardeftab720\sl320\sa280\partightenfactor0
+\cf5 \
+}
