@@ -1,0 +1,56 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    
+    
+#        　　　　　　 4
+
+#     　　　　　　　/     \
+
+# 　　           2       6
+
+#             /   \    /   \
+
+#            1    5   3      7
+
+  # 很明显3和5颠倒了。那么在中序遍历时：当碰到第一个逆序时：为5->4，那么将n1指向5，n2指向4，
+  # 注意，此时n1已经确定下来了。然后prev和root一直向后遍历，直到碰到第二个逆序时：4->3，此时将n2指向3，那么n1和n2都已经   # 确定，只需要交换节点的值即可。prev指针用来比较中序遍历中相邻两个值的大小关系。
+  # 1 2 5 4 3 6 7
+
+        # 正确的二叉树中序遍历应该是递增，而交换了两个节点后会导致有0处（交换的2个节点的值相等）或1处
+        #（交换的2个节点相邻且其值不相等）或2处（交换的2个节点不相邻且其值不相等）
+        # 某节点值小于其前一个节点的值，找出错误的节点，最后交换即可。
+
+    def recoverTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: void Do not return anything, modify root in-place instead.
+        """
+        #为Solution类添加数据成员precursor，用于在中序遍历树的过程中，指向当前节点的前驱节点。
+        self.precursor=None 
+        ''' precursor初始值必须指定为None，随着不断的递归调用recursive_left_root_right()函数，
+        precursor第一次被赋值指向二叉搜索树的最左节点（注意，不是最左叶节点。最左节点和最左叶节点可能不是同一个节点）'''
+        
+        #为Solution类添加数据成员mistake1和mistake2，用于指向错误的两个节点
+        self.mistake1=None
+        self.mistake2=None
+        self.recursive_left_root_right(root) #调用相应函数，找到错误的节点
+        self.mistake1.val,self.mistake2.val=self.mistake2.val,self.mistake1.val #交换2个错误节点的值，使二叉搜索树恢复正常
+        
+    def recursive_left_root_right(self,root):
+        if root==None:
+            return 
+        self.recursive_left_root_right(root.left) #递归地中序遍历左子树
+        
+        if self.precursor!=None and self.precursor.val>root.val:
+            if not self.mistake1:
+                self.mistake1,self.mistake2=self.precursor,root
+            else:
+                self.mistake2=root
+        self.precursor=root
+                
