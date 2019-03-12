@@ -12,7 +12,7 @@ class ListNode:
         self.val = x
         self.next = None
 
-class Solution(object):
+class Solution:
     def isPalindrome(self, head):
         """
         :type head: ListNode
@@ -108,10 +108,20 @@ class Solution:
         return root
 
 
-
-
-
-
+# Validation Binary Tree
+class Solution:
+    def isValidBST(self, root: 'TreeNode') -> 'bool':
+        if not root:
+            return True
+        
+        return self._isValidBST(root.left, float('-inf'), root.val) and self._isValidBST(root.right, root.val, float('inf'))
+    
+    def _isValidBST(self, root, left_min, right_max):
+        if not root:
+            return True
+        if not(root.val > left_min and root.val < right_max):
+            return False
+        return self._isValidBST(root.left, left_min,root.val) and self._isValidBST(root.right, root.val, right_max)
 
 
 
